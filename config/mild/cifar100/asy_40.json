@@ -1,0 +1,45 @@
+{
+    "title": "MILD_Cifar100_Asy40",
+    "reference": "FINE",
+
+    "trainer": "MILD",
+
+    "dataset":{
+        "name": "Cifar100",
+        "split_val": true,
+        "noise_type": "asymmetric",
+        "noise_rate": 0.4,
+        "batch_size": 128
+    },
+
+    "model":{
+        "name": "ResNet34"
+    },
+
+    "optim": {
+        "loss": {
+            "name": "CrossEntropyLoss"
+        },
+        "optimizer": {
+            "name": "SGD",
+            "lr": 0.01,
+            "momentum": 0.9,
+            "weight_decay": [5e-3]
+        },
+        "scheduler": {
+            "name": "CosineAnnealingLR"
+        }
+    },
+
+
+    "train": {
+        "stages": [70, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+        "val_interval": 5,
+        "test_interval": 5,
+        "save_interval": 99999
+    },
+
+    "logger": {
+        "log_dir": "ft_log"
+    }
+}
